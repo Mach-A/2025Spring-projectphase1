@@ -17,6 +17,7 @@ version: "2"
 services:
   namenode:
     image: ubcse587/hadoop-namenode:3.4.1-1
+    platform: linux/amd64
     hostname: namenode
     command: [ "/opt/hadoop/namenode.sh" ]
     volumes:
@@ -29,6 +30,7 @@ services:
 
   datanode1:
     image: ubcse587/hadoop-datanode:3.4.1-1
+    platform: linux/amd64
     hostname: datanode1
     command: [ "hdfs", "datanode" ]
     ports:
@@ -43,6 +45,7 @@ services:
 
   resourcemanager:
     image: ubcse587/hadoop:3.4.1-1
+    platform: linux/amd64
     hostname: resourcemanager
     command: [ "yarn", "resourcemanager" ]
     ports:
@@ -53,6 +56,7 @@ services:
       - ./test.sh:/opt/test.sh
   nodemanager:
     hostname: nodemanager
+    platform: linux/amd64
     image: ubcse587/hadoop:3.4.1-1
     command: [ "yarn", "nodemanager" ]
     ports:
